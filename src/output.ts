@@ -1,14 +1,21 @@
-import { IOutputEditor } from '.';
+export interface OutputEditor {
+  addOption(key: string, value: any): void;
+  addNormalArg(arg: string): void;
+  output(): Output;
+}
 
-export class OutputEditor implements IOutputEditor {
-  private _output: {
-    others: string[];
-    options: { [key: string]: any };
+export interface Output {
+  nonOptions: string[];
+  options: {
+    [key: string]: any;
   };
+}
 
+export class BaseOutputEditor implements OutputEditor {
+  private _output: Output;
   constructor() {
     this._output = {
-      others: [],
+      nonOptions: [],
       options: {},
     };
   }
@@ -18,7 +25,7 @@ export class OutputEditor implements IOutputEditor {
   }
 
   addNormalArg(arg: string) {
-    this._output.others.push(arg);
+    this._output.nonOptions.push(arg);
   }
 
   addOption(key: string, value: any) {

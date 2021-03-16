@@ -1,11 +1,11 @@
-import { IOutputEditor, IValidator } from '.';
+import { OutputEditor, Validator } from '.';
 
 export class Parser {
   private args: string[];
-  private outputEditor: IOutputEditor;
-  private validator: IValidator;
+  private outputEditor: OutputEditor;
+  private validator: Validator;
 
-  constructor(validator: IValidator, outputEditor: IOutputEditor) {
+  constructor(validator: Validator, outputEditor: OutputEditor) {
     this.args = [];
     this.outputEditor = outputEditor;
     this.validator = validator;
@@ -14,7 +14,6 @@ export class Parser {
   parse(args: string[]) {
     this.args = this.ungroup(args);
     this.args.forEach(arg => this.parseArg(arg));
-
     return this.outputEditor.output();
   }
 

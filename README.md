@@ -31,19 +31,23 @@ Fields:
 
 Methods:
 
-* __parse(args:string[]):any__: takes a string of arguments and return a parsed output.
+* __parse(args:string[]):any__: takes a string of arguments and return the parsed output.
 
-### 2. Validator
+### 2. BaseValidator
 
-Contains validating methods.
+Fields:
 
-* isOption(arg: string): boolean
-* isGroup(arg: string): boolean
-* isValueOfOption(arg: string, args: string[])
-* isValidParameter(arg: string): boolean
-* isValidFlag(arg: string): boolean
+* __format__: defines what arguments are validated against.
 
-### 3. OutputEditor
+Methods:
+
+* __isOption(arg: string)__: boolean
+* __isGroup(arg: string)__: boolean
+* __isValueOfOption(arg: string, args__: string[])
+* __isValidParameter(arg: string)__: boolean
+* __isValidFlag(arg: string)__: boolean
+
+### 3. BaseOutputEditor
 
 Fields:
 
@@ -57,8 +61,6 @@ Methods:
 
 ### 4. Interface
 
-The library can be customized by extending the following exposed interfaces:
-
-* IParser
-* IValidator
-* IOutputEditor
+* Validator
+* OutputEditor
+* Output: the type returned by OutputEditor.output()

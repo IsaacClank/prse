@@ -1,7 +1,18 @@
-import { ParseSyntax, IValidator } from '.';
+export interface Format {
+  parameters: string[];
+  flags: string[];
+}
 
-export class Validator implements IValidator {
-  constructor(private format: ParseSyntax) {}
+export interface Validator {
+  isOption(arg: string): boolean;
+  isGroup(arg: string): boolean;
+  isValueOfOption(arg: string, args: string[]): boolean;
+  isValidParameter(arg: string): boolean;
+  isValidFlag(arg: string): boolean;
+}
+
+export class BaseValidator implements Validator {
+  constructor(private format: Format) {}
 
   isOption(arg: string): boolean {
     const optionSyntaxRe = /^-{1,2}\w+/;
