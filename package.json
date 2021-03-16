@@ -1,0 +1,24 @@
+{
+  "name": "prse",
+  "version": "0.1.0",
+  "description": "Minimal cli parser library",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "license": "GPL-3.0-or-later",
+  "author": "IsaacClank",
+  "repository": "github.com/IsaacClank/prse.git",
+  "scripts": {
+    "tsc": "pnpx tsc",
+    "dev": "pnpm tsc && node dist/index.js",
+    "test": "pnpm tsc && pnpx ava",
+    "clean": "rm -rf node_modules dist build"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.34",
+    "prve": "^0.1.1",
+    "typescript": "^4.2.3"
+  }
+}
